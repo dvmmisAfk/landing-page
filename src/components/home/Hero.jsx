@@ -1,7 +1,9 @@
 import { useCallback, useEffect, useRef } from 'react';
-import { FRAME_COUNT, getFramePath } from '../../utils/heroFrames';
+import { FRAME_COUNT, getFramePath, HERO_PREVIEW_FRAME } from '../../utils/heroFrames';
 import useScrollFrames from '../../hooks/useScrollFrames';
+import useStaticHero from '../../hooks/useStaticHero';
 import HashLink from '../ui/HashLink';
+import SplitText from '../ui/SplitText';
 
 const FRAME_CROP = 3;
 
@@ -32,18 +34,28 @@ function drawFrame(canvas, img) {
 }
 
 export default function Hero() {
+  const staticHero = useStaticHero();
   const sectionRef = useRef(null);
-  const { frameIndex } = useScrollFrames(sectionRef);
+  const scrollFrameIndex = useScrollFrames(sectionRef, !staticHero);
+  const frameIndex = staticHero ? HERO_PREVIEW_FRAME : scrollFrameIndex;
   const canvasRef = useRef(null);
   const imagesRef = useRef([]);
 
   useEffect(() => {
+    if (staticHero) {
+      const img = new Image();
+      img.src = getFramePath(HERO_PREVIEW_FRAME);
+      imagesRef.current = [];
+      imagesRef.current[HERO_PREVIEW_FRAME] = img;
+      return;
+    }
+
     imagesRef.current = Array.from({ length: FRAME_COUNT }, (_, i) => {
       const img = new Image();
       img.src = getFramePath(i);
       return img;
     });
-  }, []);
+  }, [staticHero]);
 
   const renderFrame = useCallback((index) => {
     const canvas = canvasRef.current;
@@ -56,13 +68,15 @@ export default function Hero() {
       img.onload = () => drawFrame(canvas, img);
     }
 
+    if (staticHero) return;
+
     [index - 1, index + 1, index + 2]
       .filter((i) => i >= 0 && i < FRAME_COUNT)
       .forEach((i) => {
         const next = imagesRef.current[i];
         if (next && !next.complete) next.src = getFramePath(i);
       });
-  }, []);
+  }, [staticHero]);
 
   useEffect(() => {
     renderFrame(frameIndex);
@@ -92,11 +106,26 @@ export default function Hero() {
   }, [frameIndex, renderFrame]);
 
   return (
-    <section className="hero-scroll" ref={sectionRef}>
+    <section
+      className={`hero-scroll${staticHero ? ' hero-scroll--static' : ''}`}
+      ref={sectionRef}
+    >
       <div className="hero-sticky">
         <div className="container hero-inner">
           <div className="hero-content">
-            <h1>A Community Where Seniors and Youth Support Each Other</h1>
+            <SplitText
+              tag="h1"
+              text="A Community Where Seniors and Youth Support Each Other"
+              textAlign="left"
+              splitType="chars"
+              delay={35}
+              duration={0.65}
+              ease="power3.out"
+              from={{ opacity: 0, y: 36 }}
+              to={{ opacity: 1, y: 0 }}
+              threshold={0.15}
+              rootMargin="0px"
+            />
             <p className="hero-desc">
               AgeWell connects seniors, young volunteers, and organizations through meaningful activities, events, and community support.
             </p>

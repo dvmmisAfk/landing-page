@@ -1,5 +1,5 @@
 import AppLink from '../ui/AppLink';
-import { ContentTiltedCard } from '../ui/TiltedCard';
+import { GlowTiltedCard } from '../ui/GlowTiltedCard';
 import { ROUTES } from '../../routes/paths';
 
 const badges = [
@@ -35,7 +35,7 @@ export default function PartnerSection() {
   return (
     <section className="partner-section">
       <div className="container">
-        <ContentTiltedCard>
+        <GlowTiltedCard>
           <div className="partner-inner">
             <div className="partner-logo-wrap" aria-hidden="true">
               <img src="/assets/partner.png" alt="" width="118" height="114" />
@@ -67,7 +67,7 @@ export default function PartnerSection() {
               </div>
             </div>
           </div>
-        </ContentTiltedCard>
+        </GlowTiltedCard>
       </div>
     </section>
   );

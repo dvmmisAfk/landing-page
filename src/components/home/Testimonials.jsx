@@ -135,6 +135,18 @@ export default function Testimonials() {
   const trackTranslate =
     viewportWidth > 0 ? viewportWidth / 2 - trackOffset : 0;
 
+  const touchStartX = useRef(0);
+
+  const handleTouchStart = (event) => {
+    touchStartX.current = event.changedTouches[0].clientX;
+  };
+
+  const handleTouchEnd = (event) => {
+    const deltaX = event.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(deltaX) < 48) return;
+    goTo(deltaX < 0 ? 1 : -1);
+  };
+
   return (
     <section className="testimonials">
       <div className="container">
@@ -156,7 +168,12 @@ export default function Testimonials() {
           </svg>
         </button>
 
-        <div className="testimonial-carousel-viewport" ref={viewportRef}>
+        <div
+          className="testimonial-carousel-viewport"
+          ref={viewportRef}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
           <div
             ref={trackRef}
             className="testimonial-carousel-track"

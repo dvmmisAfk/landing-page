@@ -1,6 +1,6 @@
 import AppLink from '../ui/AppLink';
 import ScrollFloat from '../ui/ScrollFloat';
-import { ContentTiltedCard } from '../ui/TiltedCard';
+import { GlowTiltedCard } from '../ui/GlowTiltedCard';
 import { CheckIcon } from './WhyMatters';
 import HashLink from '../ui/HashLink';
 import { ROUTES } from '../../routes/paths';
@@ -45,7 +45,7 @@ export default function ExploreRole() {
         </div>
         <div className="role-grid">
           {roles.map((role) => (
-            <ContentTiltedCard key={role.title}>
+            <GlowTiltedCard key={role.title} backgroundColor="#FAFCFB">
               <div className="role-card">
               <div className="role-card-head">
                 <div className="role-avatar">
@@ -67,7 +67,7 @@ export default function ExploreRole() {
                 <AppLink to={role.to} className="btn btn-ghost">Learn more</AppLink>
               </div>
               </div>
-            </ContentTiltedCard>
+            </GlowTiltedCard>
           ))}
         </div>
       </div>

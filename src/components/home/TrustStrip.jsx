@@ -1,4 +1,4 @@
-import { ContentTiltedCard } from '../ui/TiltedCard';
+import { GlowTiltedCard } from '../ui/GlowTiltedCard';
 
 const trustItems = [
   {
@@ -44,7 +44,7 @@ export default function TrustStrip() {
   return (
     <div className="trust-strip">
       <div className="container">
-        <ContentTiltedCard>
+        <GlowTiltedCard backgroundColor="#FAFCFB">
           <div className="trust-inner">
             {trustItems.map((item) => (
               <div key={item.label} className={`trust-item${item.divider ? ' trust-divider' : ''}`}>
@@ -56,7 +56,7 @@ export default function TrustStrip() {
               </div>
             ))}
           </div>
-        </ContentTiltedCard>
+        </GlowTiltedCard>
       </div>
     </div>
   );

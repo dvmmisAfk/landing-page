@@ -1,4 +1,4 @@
-import { ContentTiltedCard } from '../ui/TiltedCard';
+import { GlowTiltedCard } from '../ui/GlowTiltedCard';
 
 const FEATURES = [
   {
@@ -68,7 +68,7 @@ export default function AppSection() {
           </ul>
 
           {/* Waitlist form */}
-          <ContentTiltedCard className="app-waitlist-tilt">
+          <GlowTiltedCard className="app-waitlist-tilt">
             <form className="app-waitlist" onSubmit={(e) => e.preventDefault()}>
               <h3>Join the Waitlist</h3>
               <label className="app-field">
@@ -93,7 +93,7 @@ export default function AppSection() {
                 Join
               </button>
             </form>
-          </ContentTiltedCard>
+          </GlowTiltedCard>
 
       </div>
     </section>

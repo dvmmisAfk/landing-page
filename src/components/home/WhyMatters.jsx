@@ -1,5 +1,5 @@
 import ScrollFloat from '../ui/ScrollFloat';
-import { ContentTiltedCard } from '../ui/TiltedCard';
+import { GlowTiltedCard } from '../ui/GlowTiltedCard';
 
 function CheckIcon() {
   return (
@@ -65,7 +65,7 @@ export default function WhyMatters() {
         </div>
         <div className="why-grid">
           {whyCards.map((card) => (
-            <ContentTiltedCard key={card.title}>
+            <GlowTiltedCard key={card.title}>
               <div className="why-card">
               <div className="why-icon">{card.icon}</div>
               <div className="why-text">
@@ -73,7 +73,7 @@ export default function WhyMatters() {
                 {card.paragraphs.map((p) => <p key={p}>{p}</p>)}
               </div>
               </div>
-            </ContentTiltedCard>
+            </GlowTiltedCard>
           ))}
         </div>
       </div>

@@ -1,5 +1,5 @@
 import ScrollFloat from '../ui/ScrollFloat';
-import { ContentTiltedCard } from '../ui/TiltedCard';
+import { GlowTiltedCard } from '../ui/GlowTiltedCard';
 
 const features = [
   {
@@ -82,12 +82,12 @@ export default function WhyAgewell() {
         <div className="section-header"><ScrollFloat>Why AgeWell?</ScrollFloat></div>
         <div className="features-grid">
           {features.map((feature) => (
-            <ContentTiltedCard key={feature.title} className="feature-tilt">
+            <GlowTiltedCard key={feature.title} className="feature-tilt">
               <div className="feature-item">
               {feature.icon}
               <div><h4>{feature.title}</h4><p>{feature.desc}</p></div>
               </div>
-            </ContentTiltedCard>
+            </GlowTiltedCard>
           ))}
         </div>
       </div>
