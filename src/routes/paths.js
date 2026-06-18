@@ -24,11 +24,23 @@ export const ROUTES = {
   sitemap: '/sitemap',
 };
 
+export const SITE = {
+  website: 'https://www.agewellus.com',
+  email: 'support@agewellus.com',
+  founderLinkedIn: 'https://www.linkedin.com/in/greeva-verma-letsconnect',
+};
+
 export const SOCIAL_LINKS = [
-  { label: 'Facebook', href: 'https://facebook.com/agewellus' },
-  { label: 'Twitter', href: 'https://twitter.com/agewellus' },
-  { label: 'Discord', href: 'https://discord.gg/agewellus' },
-  { label: 'Telegram', href: 'https://t.me/agewellus' },
-  { label: 'Instagram', href: 'https://www.instagram.com/agewell.us/' },
-  { label: 'Threads', href: 'https://threads.net/@agewellus' },
+  {
+    label: 'Facebook',
+    href: 'https://www.facebook.com/profile.php?id=61579211683392',
+  },
+  {
+    label: 'Instagram',
+    href: 'https://www.instagram.com/agewell.us?igsh=MWluMTB3NjRzdHdxeA==',
+  },
+  {
+    label: 'LinkedIn',
+    href: 'https://www.linkedin.com/company/agewellus/',
+  },
 ];

@@ -1,4 +1,4 @@
-import { ROUTES } from '../routes/paths';
+import { ROUTES, SITE, SOCIAL_LINKS } from '../routes/paths';
 
 const R = ROUTES;
 
@@ -242,13 +242,19 @@ export const SITE_PAGES = {
       {
         heading: 'Other ways to reach us',
         list: [
-          'General support: support@agewellus.com',
+          'Website: www.agewellus.com',
+          'Email: support@agewellus.com',
           'Partnerships & NGOs: partners@agewellus.com',
           'Careers: careers@agewellus.com',
         ],
       },
     ],
     relatedLinks: [
+      { label: 'Website — www.agewellus.com', to: SITE.website },
+      ...SOCIAL_LINKS.map((link) => ({
+        label: `AgeWell on ${link.label}`,
+        to: link.href,
+      })),
       { label: 'Help Center', to: R.help },
       { label: 'Feedback', to: R.feedback },
       { label: 'Report an Issue', to: R.reportIssue },
@@ -450,6 +456,12 @@ export const SITE_PAGES = {
         ],
       },
       {
+        heading: 'Founder',
+        paragraphs: [
+          'Greeva Verma founded AgeWell with a vision to connect generations through meaningful community experiences.',
+        ],
+      },
+      {
         heading: 'Join us',
         paragraphs: [
           'Interested in working with us? Visit our Careers page or reach out at careers@agewellus.com.',
@@ -457,6 +469,8 @@ export const SITE_PAGES = {
       },
     ],
     relatedLinks: [
+      { label: 'Greeva on LinkedIn', to: SITE.founderLinkedIn },
+      { label: 'AgeWell on LinkedIn', to: SOCIAL_LINKS.find((l) => l.label === 'LinkedIn').href },
       { label: 'About Us', to: R.about },
       { label: 'Careers', to: R.careers },
       { label: 'Our Mission', to: R.mission },

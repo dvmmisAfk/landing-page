@@ -2,8 +2,17 @@ import AppLink from '../ui/AppLink';
 import PressureHeading from '../ui/PressureHeading';
 
 function PageLink({ to, className, children }) {
-  if (to.startsWith('mailto:')) {
-    return <a href={to} className={className}>{children}</a>;
+  if (to.startsWith('mailto:') || to.startsWith('http://') || to.startsWith('https://')) {
+    const external = to.startsWith('http');
+    return (
+      <a
+        href={to}
+        className={className}
+        {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+      >
+        {children}
+      </a>
+    );
   }
 
   return <AppLink to={to} className={className}>{children}</AppLink>;
