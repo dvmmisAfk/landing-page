@@ -1,4 +1,5 @@
 import PressureHeading from '../ui/PressureHeading';
+import { GlowTiltedCard } from '../ui/GlowTiltedCard';
 import {
   AiMatchmakingIcon,
   CommunityMarketplaceIcon,
@@ -48,13 +49,20 @@ export default function WhyAgewell() {
         <div className="section-header"><PressureHeading text="Why AgeWell?" /></div>
         <div className="features-grid">
           {features.map((feature) => (
-            <div key={feature.title} className="feature-item">
-              {feature.icon}
-              <div>
-                <h4>{feature.title}</h4>
-                <p>{feature.desc}</p>
+            <GlowTiltedCard
+              key={feature.title}
+              className="feature-tilt"
+              backgroundColor="#FAFCFB"
+              glowProps={{ glowRadius: 18, borderRadius: 10 }}
+            >
+              <div className="feature-item">
+                {feature.icon}
+                <div>
+                  <h4>{feature.title}</h4>
+                  <p>{feature.desc}</p>
+                </div>
               </div>
-            </div>
+            </GlowTiltedCard>
           ))}
         </div>
       </div>
