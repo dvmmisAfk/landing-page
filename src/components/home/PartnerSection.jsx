@@ -1,5 +1,5 @@
 import AppLink from '../ui/AppLink';
-import { GlowTiltedCard } from '../ui/GlowTiltedCard';
+import PressureHeading from '../ui/PressureHeading';
 import { ROUTES } from '../../routes/paths';
 
 const badges = [
@@ -35,8 +35,7 @@ export default function PartnerSection() {
   return (
     <section className="partner-section">
       <div className="container">
-        <GlowTiltedCard>
-          <div className="partner-inner">
+        <div className="partner-inner">
             <div className="partner-logo-wrap" aria-hidden="true">
               <img src="/assets/partner.png" alt="" width="118" height="114" />
             </div>
@@ -44,7 +43,7 @@ export default function PartnerSection() {
             <div className="partner-content">
               <div className="partner-body">
                 <p className="partner-label">Partner With Us</p>
-                <h2 className="partner-title">Join Hands With AgeWell</h2>
+                <PressureHeading text="Join Hands With AgeWell" variant="partner" className="partner-title-pressure" />
                 <p className="partner-desc">
                   We collaborate with NGOs, organizers, and institutions to build meaningful
                   senior-youth engagement that creates lasting in communities.
@@ -66,8 +65,7 @@ export default function PartnerSection() {
                 ))}
               </div>
             </div>
-          </div>
-        </GlowTiltedCard>
+        </div>
       </div>
     </section>
   );

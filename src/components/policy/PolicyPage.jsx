@@ -1,5 +1,5 @@
 import AppLink from '../ui/AppLink';
-import ScrollFloat from '../ui/ScrollFloat';
+import PressureHeading from '../ui/PressureHeading';
 import usePolicyScrollSpy from '../../hooks/usePolicyScrollSpy';
 
 export default function PolicyPage({ title, intro, sections, navItems, relatedLinks = [] }) {
@@ -21,13 +21,13 @@ export default function PolicyPage({ title, intro, sections, navItems, relatedLi
         </aside>
 
         <main className="policy-content">
-          <h1>{title}</h1>
+          <PressureHeading text={title} variant="page" />
           {intro?.map((paragraph) => (
             <p key={paragraph.slice(0, 32)} className="policy-intro">{paragraph}</p>
           ))}
           {sections.map((section) => (
             <div key={section.id} className="policy-sec" id={section.id}>
-              <ScrollFloat>{section.heading}</ScrollFloat>
+              <PressureHeading text={section.heading} variant="content" />
               <p>{section.body}</p>
             </div>
           ))}

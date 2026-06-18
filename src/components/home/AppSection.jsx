@@ -1,4 +1,5 @@
 import { GlowTiltedCard } from '../ui/GlowTiltedCard';
+import PressureHeading from '../ui/PressureHeading';
 
 const FEATURES = [
   {
@@ -31,7 +32,7 @@ export default function AppSection() {
           {/* Copy */}
           <div className="app-copy">
             <p className="app-eyebrow">Coming Soon</p>
-            <h2 className="app-title">Get Our App</h2>
+            <PressureHeading text="Get Our App" variant="app" className="app-title-pressure" />
             <p className="app-lead">
               Be the first to experience the future of intergenerational connection.
             </p>

@@ -1,5 +1,5 @@
 import AppLink from '../ui/AppLink';
-import ScrollFloat from '../ui/ScrollFloat';
+import PressureHeading from '../ui/PressureHeading';
 import { GlowTiltedCard } from '../ui/GlowTiltedCard';
 import { CheckIcon } from './WhyMatters';
 import HashLink from '../ui/HashLink';
@@ -14,6 +14,7 @@ const roles = [
     to: ROUTES.forSeniors,
     desc: 'Join a vibrant community where your wisdom is valued and your days are filled with joy, purpose, and meaningful connections.',
     features: ['AI-powered daily dashboard', 'Community groups & activities'],
+    animation: 'float',
   },
   {
     image: '/assets/role-youth.png',
@@ -23,6 +24,7 @@ const roles = [
     to: ROUTES.forYouth,
     desc: 'Make a difference while gaining valuable real-world experience through volunteering, teaching, and connecting with seniors.',
     features: ['Volunteer opportunities', 'Teach & share your skills'],
+    animation: 'sway',
   },
   {
     image: '/assets/role-ngo.png',
@@ -32,6 +34,7 @@ const roles = [
     to: ROUTES.forNgo,
     desc: 'Join a vibrant community where your wisdom is valued and your days are filled with joy, purpose, and meaningful connections',
     features: ['Event trip & management', 'Volunteer coordination'],
+    animation: 'pulse',
   },
 ];
 
@@ -40,32 +43,38 @@ export default function ExploreRole() {
     <section className="explore-role" id="explore">
       <div className="container">
         <div className="section-header">
-          <ScrollFloat>Explore Your Role</ScrollFloat>
+          <PressureHeading text="Explore Your Role" />
           <p>Select your role to discover how AgeWell can enrich your life and strengthen our community</p>
         </div>
         <div className="role-grid">
           {roles.map((role) => (
-            <GlowTiltedCard key={role.title} backgroundColor="#FAFCFB">
+            <GlowTiltedCard
+              key={role.title}
+              backgroundColor="#FAFCFB"
+              glowProps={{ glowRadius: 18, borderRadius: 10 }}
+            >
               <div className="role-card">
-              <div className="role-card-head">
-                <div className="role-avatar">
-                  <img src={role.image} alt={role.alt} width="85" height="85" />
+                <div className="role-card-head">
+                  <div className="role-avatar" data-animate={role.animation}>
+                    <div className="role-avatar-stage">
+                      <img src={role.image} alt={role.alt} width="85" height="85" />
+                    </div>
+                  </div>
+                  <div>
+                    <div className="role-title">{role.title}</div>
+                    <div className="role-subtitle">{role.subtitle}</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="role-title">{role.title}</div>
-                  <div className="role-subtitle">{role.subtitle}</div>
+                <p className="role-desc">{role.desc}</p>
+                <ul className="role-features">
+                  {role.features.map((feature) => (
+                    <li key={feature}><CheckIcon />{feature}</li>
+                  ))}
+                </ul>
+                <div className="role-card-actions">
+                  <HashLink hash="waitlist" className="btn btn-primary">Join Waitlist</HashLink>
+                  <AppLink to={role.to} className="btn btn-ghost">Learn more</AppLink>
                 </div>
-              </div>
-              <p className="role-desc">{role.desc}</p>
-              <ul className="role-features">
-                {role.features.map((feature) => (
-                  <li key={feature}><CheckIcon />{feature}</li>
-                ))}
-              </ul>
-              <div className="role-card-actions">
-                <HashLink hash="waitlist" className="btn btn-primary">Join Waitlist</HashLink>
-                <AppLink to={role.to} className="btn btn-ghost">Learn more</AppLink>
-              </div>
               </div>
             </GlowTiltedCard>
           ))}

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import ScrollFloat from '../ui/ScrollFloat';
+import PressureHeading from '../ui/PressureHeading';
 
 const TESTIMONIALS = [
   {
@@ -39,14 +39,32 @@ function getSlideState(offset) {
   return 'far';
 }
 
-function TestimonialSlide({ testimonial, state, distance }) {
+function TestimonialSlide({ testimonial, state, distance, index, isActive, onSelect }) {
   const [avatarError, setAvatarError] = useState(false);
+
+  const handleActivate = () => {
+    if (!isActive) onSelect(index);
+  };
+
+  const handleKeyDown = (event) => {
+    if (isActive) return;
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      onSelect(index);
+    }
+  };
 
   return (
     <article
       className={`testimonial-slide testimonial-slide--${state}`}
       data-distance={distance}
       style={{ zIndex: 10 - distance }}
+      onClick={handleActivate}
+      onKeyDown={handleKeyDown}
+      role={isActive ? undefined : 'button'}
+      tabIndex={isActive ? -1 : 0}
+      aria-current={isActive ? 'true' : undefined}
+      aria-label={isActive ? undefined : `Show testimonial from ${testimonial.name}`}
     >
       <div className="testimonial-slide-card">
         <div className="testimonial-slide-accent testimonial-slide-accent--top" aria-hidden="true" />
@@ -85,6 +103,10 @@ export default function Testimonials() {
   const [viewportWidth, setViewportWidth] = useState(0);
 
   const total = TESTIMONIALS.length;
+
+  const goToIndex = useCallback((index) => {
+    setActiveIndex(index);
+  }, []);
 
   const goTo = useCallback(
     (direction) => {
@@ -151,7 +173,7 @@ export default function Testimonials() {
     <section className="testimonials">
       <div className="container">
         <div className="section-header">
-          <ScrollFloat>Voices From Our Community</ScrollFloat>
+          <PressureHeading text="Voices From Our Community" />
           <p>Real experiences from people building meaningful connections</p>
         </div>
       </div>
@@ -189,6 +211,9 @@ export default function Testimonials() {
                   testimonial={testimonial}
                   state={getSlideState(offset)}
                   distance={distance}
+                  index={index}
+                  isActive={distance === 0}
+                  onSelect={goToIndex}
                 />
               );
             })}

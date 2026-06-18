@@ -1,5 +1,5 @@
 import AppLink from '../ui/AppLink';
-import ScrollFloat from '../ui/ScrollFloat';
+import PressureHeading from '../ui/PressureHeading';
 
 function PageLink({ to, className, children }) {
   if (to.startsWith('mailto:')) {
@@ -21,7 +21,7 @@ export default function InfoPage({
     <div className="info-page">
       <div className="stub-hero">
         <div className="container">
-          <h1>{title}</h1>
+          <PressureHeading text={title} variant="page" />
           {intro && <p className="info-intro">{intro}</p>}
         </div>
       </div>
@@ -29,7 +29,7 @@ export default function InfoPage({
       <div className="container info-content">
         {sections.map((section) => (
           <section key={section.heading} className="info-sec">
-            <ScrollFloat>{section.heading}</ScrollFloat>
+            <PressureHeading text={section.heading} variant="content" />
             {section.paragraphs?.map((paragraph) => (
               <p key={paragraph.slice(0, 40)}>{paragraph}</p>
             ))}
@@ -45,7 +45,7 @@ export default function InfoPage({
 
         {sitemapGroups.map((group) => (
           <section key={group.heading} className="info-sec">
-            <ScrollFloat>{group.heading}</ScrollFloat>
+            <PressureHeading text={group.heading} variant="content" />
             <ul className="info-sitemap">
               {group.links.map((link) => (
                 <li key={link.to}>

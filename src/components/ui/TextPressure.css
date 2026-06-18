@@ -1,0 +1,36 @@
+.text-pressure-root {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background: transparent;
+}
+
+.text-pressure-root--fisheye {
+  overflow: visible;
+  cursor: default;
+}
+
+.text-pressure-fisheye span {
+  transform-origin: 50% 100%;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pressure-heading--static .text-pressure-root {
+    height: auto !important;
+  }
+
+  .pressure-heading--static .text-pressure-title {
+    font-size: inherit !important;
+    transform: none !important;
+    white-space: normal !important;
+    width: auto !important;
+    text-align: inherit !important;
+  }
+
+  .pressure-heading--static .text-pressure-title span {
+    font-variation-settings: normal !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
