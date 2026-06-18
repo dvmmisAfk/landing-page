@@ -235,6 +235,12 @@ img { max-width: 100%; height: auto; display: block; }
   background: var(--white);
 }
 
+.navbar .btn-teal-out:hover {
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
+}
+
 .navbar .nav-desktop-cta .btn-teal-out { margin-left: 0; }
 
 /* ══════════════════════════════════════
