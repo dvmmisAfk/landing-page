@@ -1,4 +1,5 @@
 import PressureHeading from '../ui/PressureHeading';
+import { GlowTiltedCard } from '../ui/GlowTiltedCard';
 
 function CheckIcon() {
   return (
@@ -79,24 +80,27 @@ export default function WhyMatters() {
 
         <div className="why-grid">
           {whyCards.map((card) => (
-            <article
+            <GlowTiltedCard
               key={card.id}
-              className={`why-card${card.featured ? ' why-card--featured' : ''}`}
-              data-card={card.id}
+              className={`why-card-tilt${card.featured ? ' why-card-tilt--featured' : ''}`}
+              backgroundColor="#f8fafc"
+              glowProps={{ glowRadius: 18, borderRadius: 14 }}
             >
-              <WhyAvatar
-                id={card.id}
-                src={card.image}
-                alt={card.alt}
-                animation={card.animation}
-              />
-              <div className="why-text">
-                <h3>{card.title}</h3>
-                {card.paragraphs.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
-                ))}
-              </div>
-            </article>
+              <article className="why-card" data-card={card.id}>
+                <WhyAvatar
+                  id={card.id}
+                  src={card.image}
+                  alt={card.alt}
+                  animation={card.animation}
+                />
+                <div className="why-text">
+                  <h3>{card.title}</h3>
+                  {card.paragraphs.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+              </article>
+            </GlowTiltedCard>
           ))}
         </div>
       </div>

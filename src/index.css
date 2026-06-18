@@ -615,7 +615,7 @@ img { max-width: 100%; height: auto; display: block; }
   box-sizing: border-box;
 }
 
-.why-card--featured {
+.why-card-tilt--featured {
   grid-column: 1 / -1;
   width: min(100%, calc((100% - 24px) / 2));
   justify-self: center;
@@ -1217,6 +1217,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .border-glow-card .role-card,
+.border-glow-card .why-card,
 .border-glow-card .partner-inner,
 .border-glow-card .app-waitlist {
   border: none;
@@ -1823,7 +1824,7 @@ img { max-width: 100%; height: auto; display: block; }
     gap: 20px;
   }
 
-  .why-card--featured {
+  .why-card-tilt--featured {
     width: 100%;
   }
   .role-grid { grid-template-columns: 1fr; gap: 20px; }
