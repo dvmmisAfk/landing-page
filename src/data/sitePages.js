@@ -581,4 +581,4 @@ export const SITE_PAGES = {
   },
 };
 
-export const SITE_PAGE_PATHS = Object.keys(SITE_PAGES);
+export const SITE_PAGE_PATHS = Object.keys(SITE_PAGES).filter((path) => path !== R.forNgo);

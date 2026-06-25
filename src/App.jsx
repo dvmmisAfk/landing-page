@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import ScrollToHash from './components/ui/ScrollToHash';
 import HomePage from './pages/HomePage';
+import ForNgoPage from './pages/ForNgoPage';
 import InfoPageRoute from './pages/InfoPageRoute';
 import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
 import TermsPage from './pages/TermsPage';
@@ -12,6 +13,7 @@ export default function App() {
       <ScrollToHash />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/for-ngo" element={<ForNgoPage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
         <Route path="/terms" element={<TermsPage />} />
         {SITE_PAGE_PATHS.map((path) => (
