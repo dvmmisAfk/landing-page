@@ -3,7 +3,8 @@ import Layout from '../components/layout/Layout';
 import AppLink from '../components/ui/AppLink';
 import HashLink from '../components/ui/HashLink';
 import {
-  NGO_ICON_ASSETS,
+  NGO_ICON_KEYS,
+  NgoCtaIcon,
   NgoFeatureIcon,
   NgoPartnerIcon,
   StepArrowIcon,
@@ -39,22 +40,22 @@ const platformFeatures = [
   {
     title: 'Volunteer Management',
     desc: 'Recruit and engage volunteers efficiently.',
-    icon: NGO_ICON_ASSETS.volunteers,
+    icon: NGO_ICON_KEYS.volunteers,
   },
   {
     title: 'Senior Engagement',
     desc: ['Run community events, wellness initiatives', 'and learning programs.'],
-    icon: NGO_ICON_ASSETS.heart,
+    icon: NGO_ICON_KEYS.heart,
   },
   {
     title: 'AI-Powered Support',
     desc: ['Smart recommendations and resource', 'matching to save time.'],
-    icon: NGO_ICON_ASSETS.ai,
+    icon: NGO_ICON_KEYS.ai,
   },
   {
     title: 'Impact Analytics',
     desc: ['Measure outcomes, track participation', 'and generate reports.'],
-    icon: NGO_ICON_ASSETS.analytics,
+    icon: NGO_ICON_KEYS.analytics,
   },
 ];
 
@@ -66,7 +67,7 @@ const partnerBenefits = [
       'volunteers and communities',
       'across your network.',
     ],
-    icon: NGO_ICON_ASSETS.volunteers,
+    icon: NGO_ICON_KEYS.volunteers,
   },
   {
     title: 'Reduce Administrative Work',
@@ -75,7 +76,7 @@ const partnerBenefits = [
       'communication and reporting',
       'in one platform.',
     ],
-    icon: NGO_ICON_ASSETS.document,
+    icon: NGO_ICON_KEYS.document,
   },
   {
     title: 'Increase Participation',
@@ -84,7 +85,7 @@ const partnerBenefits = [
       'encourage involvement across',
       'generations.',
     ],
-    icon: NGO_ICON_ASSETS.heart,
+    icon: NGO_ICON_KEYS.heart,
   },
   {
     title: 'Strengthen Funding Opportunities',
@@ -93,7 +94,7 @@ const partnerBenefits = [
       'reports for grants and CSR',
       'initiatives.',
     ],
-    icon: NGO_ICON_ASSETS.chartUp,
+    icon: NGO_ICON_KEYS.chartUp,
     titleLines: ['Strengthen Funding', 'Opportunities'],
   },
 ];
@@ -167,8 +168,8 @@ export default function ForNgoPage() {
                   className="ngo-hero-image"
                   src="/assets/ngo/hero-visual.png"
                   alt=""
-                  width="458"
-                  height="392"
+                  width="540"
+                  height="462"
                   decoding="async"
                 />
               </div>
@@ -228,7 +229,7 @@ export default function ForNgoPage() {
                 <ul className="ngo-feature-list">
                   {platformFeatures.map((feature) => (
                     <li key={feature.title} className="ngo-feature-row">
-                      <NgoFeatureIcon src={feature.icon} />
+                      <NgoFeatureIcon icon={feature.icon} />
                       <div>
                         <h3>{feature.title}</h3>
                         <FeatureText desc={feature.desc} />
@@ -268,7 +269,7 @@ export default function ForNgoPage() {
               {partnerBenefits.map((card) => (
                 <article key={card.title} className="ngo-partner-card">
                   <div className="ngo-partner-icon">
-                    <NgoPartnerIcon src={card.icon} />
+                    <NgoPartnerIcon icon={card.icon} />
                   </div>
                   {card.titleLines ? (
                     <h3>
@@ -313,15 +314,7 @@ export default function ForNgoPage() {
         <section className="ngo-cta">
           <div className="container">
             <div className="ngo-cta-card">
-              <img
-                className="ngo-cta-icon"
-                src={NGO_ICON_ASSETS.community}
-                alt=""
-                width="81"
-                height="81"
-                decoding="async"
-                aria-hidden="true"
-              />
+              <NgoCtaIcon />
               <div className="ngo-cta-copy">
                 <h2>Ready to Build Stronger Communities?</h2>
                 <p>

@@ -2143,9 +2143,9 @@ img { max-width: 100%; height: auto; display: block; }
 
 .ngo-hero-inner {
   display: grid;
-  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  grid-template-columns: minmax(0, 0.88fr) minmax(0, 1.12fr);
   align-items: center;
-  gap: 20px 32px;
+  gap: 20px 24px;
   margin-bottom: 48px;
 }
 
@@ -2204,20 +2204,21 @@ img { max-width: 100%; height: auto; display: block; }
 
 .ngo-hero-visual {
   position: relative;
-  justify-self: end;
+  justify-self: stretch;
   width: 100%;
-  max-width: 520px;
-  min-height: 392px;
+  min-height: 440px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
+  padding: 0 12px 0 28px;
 }
 
 .ngo-hero-image {
-  width: min(458px, 100%);
+  width: min(540px, 100%);
+  max-width: 540px;
   height: auto;
   object-fit: contain;
-  margin-left: auto;
+  transform: translateX(-16px);
 }
 
 .ngo-stats-grid {
@@ -2417,10 +2418,10 @@ img { max-width: 100%; height: auto; display: block; }
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
 }
 
-.ngo-feature-icon img {
+.ngo-feature-icon svg {
   width: 32px;
   height: 32px;
-  object-fit: contain;
+  display: block;
 }
 
 .ngo-feature-row h3 {
@@ -2510,12 +2511,6 @@ img { max-width: 100%; height: auto; display: block; }
   height: 62px;
   border-radius: 16px;
   background: rgba(23, 123, 150, 0.1);
-}
-
-.ngo-partner-icon-badge img {
-  width: 32px;
-  height: 32px;
-  object-fit: contain;
 }
 
 .ngo-partner-card h3 {
@@ -2609,11 +2604,27 @@ img { max-width: 100%; height: auto; display: block; }
   padding: 46px 40px;
 }
 
-.ngo-cta-icon {
+.ngo-feature-icon svg,
+.ngo-partner-icon-badge svg {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+.ngo-cta-icon-wrap {
   width: 81px;
   height: 81px;
-  object-fit: contain;
   flex-shrink: 0;
+  color: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ngo-cta-icon-wrap svg {
+  width: 81px;
+  height: 81px;
+  display: block;
 }
 
 .ngo-cta-copy h2 {
@@ -2655,7 +2666,14 @@ img { max-width: 100%; height: auto; display: block; }
   }
 
   .ngo-hero-visual {
-    max-width: 460px;
+    max-width: none;
+    padding: 0;
+  }
+
+  .ngo-hero-image {
+    width: min(500px, 100%);
+    max-width: 500px;
+    transform: none;
   }
 }
 
@@ -2683,11 +2701,15 @@ img { max-width: 100%; height: auto; display: block; }
   .ngo-hero-visual {
     justify-self: center;
     justify-content: center;
-    max-width: min(458px, 100%);
+    max-width: min(540px, 100%);
+    min-height: 360px;
+    padding: 0;
   }
 
   .ngo-hero-image {
-    margin-inline: auto;
+    width: 100%;
+    max-width: 540px;
+    transform: none;
   }
 
   .ngo-stats-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 28px; }
